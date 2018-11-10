@@ -30,4 +30,23 @@ $('document').ready(() => {
             }
         });
     });
+
+    // Handle drag-drop upload
+    $('#dragdrop').on('dragover', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+    });
+
+    $('#dragdrop').on('dragleave', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+    });
+
+    $('#dragdrop').on('drop', (e) => {
+        if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log(e.originalEvent.dataTransfer.files);
+        }
+    });
 });
