@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sunshade CMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+
+<body>
+    <div class="ui large inverted top fixed borderless menu">
+        <div class="ui container">
+            <div class="ui dropdown icon item">
+                <i class="wrench icon"></i>
+                <div class="menu">
+                    <div class="item">New Client</div>
+                </div>
+            </div>
+            <div class="right item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search clients...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui container">
+        <div id="client_container" class="ui three cards">
+            <a class="ui client card" href="javascript:void(0)">
+                <div class="content">
+                    <div class="header">John Doe</div>
+                    <div class="meta">
+                        <span class="category">(999) 999-9999</span>
+                    </div>
+                    <div class="meta">
+                        <span class="category">1224 Long Address Circle Apt# 1001</span>
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <i class="calendar check outline icon"></i>
+                    Added on Oct 22, 2018
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="view_client_modal" class="ui modal">
+        <div class="header">
+            Client Name <span class="small_text">ID: 67w34hnfiusthnnskjsi734y</span>
+        </div>
+        <div class="content">
+            <form class="ui form">
+                <h4 class="ui dividing header">Basic Info</h4>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>First name</label>
+                        <input type="text" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>Last name</label>
+                        <input type="text" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Phone Number</label>
+                        <input type="text" placeholder="(xxx) xxx-xxxx" data-inputmask="'mask': '(999) 999-9999'" class="input_mask">
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header">Address</h4>
+
+                <div class="field">
+                    <label>Street Address</label>
+                    <div class="fields">
+                        <div class="twelve wide field">
+                            <input type="text" name="shipping[address]" placeholder="Street Address">
+                        </div>
+                        <div class="four wide field">
+                            <input type="text" name="shipping[address-2]" placeholder="Apt #">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>State</label>
+                        <select class="ui fluid dropdown">
+                            <option value="AL">Alabama</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Country</label>
+                        <div class="ui fluid search selection dropdown">
+                            <input type="hidden" name="country">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Select Country</div>
+                            <div class="menu">
+                                <div class="item" data-value="us"><i class="us flag"></i>United States</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="ui dividing header">Attachments</h4>
+
+                <div class="four fields">
+                    <div class="field">
+                        <button id="upload_button" class="ui small blue labeled icon button" type="button">
+                            <i class="upload icon"></i>
+                            Upload
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <button class="ui black deny button">Cancel</button>
+            <button class="ui positive right labeled icon button">
+                Save
+                <i class="checkmark icon"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="../semantic/dist/semantic.min.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

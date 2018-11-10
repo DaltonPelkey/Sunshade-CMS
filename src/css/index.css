@@ -1,0 +1,9 @@
+#client_container {
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+
+.small_text {
+    font-size: 60%;
+    padding-left: 10px;
+}
