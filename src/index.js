@@ -1,6 +1,7 @@
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain, dialog } from 'electron';
+import handle from './js/handlers';
 import path from 'path';
-import PDFWindow from 'electron-pdf-window';
+// import PDFWindow from 'electron-pdf-window';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -8,7 +9,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 let mainWindow;
-let pdf;
+// let pdf;
 
 const createWindow = () => {
     mainWindow = new BrowserWindow({
@@ -21,14 +22,14 @@ const createWindow = () => {
     });
     mainWindow.setMenu(null);
 
-    pdf = new PDFWindow({
-        width: 1000,
-        height: 600,
-        minWidth: 800,
-        minHeight: 600,
-        backgroundColor: '#e5e5e5',
-        center: true
-    });
+    // pdf = new PDFWindow({
+    //     width: 1000,
+    //     height: 600,
+    //     minWidth: 800,
+    //     minHeight: 600,
+    //     backgroundColor: '#e5e5e5',
+    //     center: true
+    // });
 
     mainWindow.loadURL(path.join('file://', __dirname, 'views', 'index.html'));
     // pdf.loadURL(path.join('file://', __dirname, 'tt.pdf'));
@@ -58,3 +59,8 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+ipcMain.on('create-open-dialog', handle.createOpenDialog);
+ipcMain.on('update-client', handle.updateClient);
+ipcMain.on('fetch-all-clients', handle.fetchAllClients);
+ipcMain.on('fetch-client', handle.fetchClient);

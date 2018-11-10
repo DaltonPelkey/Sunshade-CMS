@@ -16,7 +16,7 @@
             <div class="ui dropdown icon item">
                 <i class="wrench icon"></i>
                 <div class="menu">
-                    <div class="item">New Client</div>
+                    <div class="item" id="new_client_btn">New Client</div>
                 </div>
             </div>
             <div class="right item">
@@ -29,32 +29,11 @@
     </div>
 
     <div class="ui container">
-        <div id="client_container" class="ui three cards">
-            <a class="ui client card" href="javascript:void(0)">
-                <div class="content">
-                    <div class="header">John Doe</div>
-                    <div class="meta">
-                        <span class="category">(999) 999-9999</span>
-                    </div>
-                    <div class="meta">
-                        <span class="category">1224 Long Address Circle</span>
-                    </div>
-                    <div class="description">
-                        <p></p>
-                    </div>
-                </div>
-                <div class="extra content">
-                    <i class="calendar check outline icon"></i>
-                    Added on Oct 22, 2018
-                </div>
-            </a>
-        </div>
+        <div id="client_container" class="ui three cards"></div>
     </div>
 
     <div id="view_client_modal" class="ui modal">
-        <div class="header">
-            Client Name <span class="small_text">ID: 67w34hnfiusthnnskjsi734y</span>
-        </div>
+        <div class="header" id="client_modal_header"></div>
         <div class="content">
             <form class="ui form">
                 <h4 class="ui dividing header">Basic Info</h4>
@@ -62,18 +41,19 @@
                 <div class="two fields">
                     <div class="field">
                         <label>First name</label>
-                        <input type="text" placeholder="First Name">
+                        <input type="text" placeholder="First Name" name="fname">
                     </div>
                     <div class="field">
                         <label>Last name</label>
-                        <input type="text" placeholder="Last Name">
+                        <input type="text" placeholder="Last Name" name="lname">
                     </div>
                 </div>
 
                 <div class="two fields">
                     <div class="field">
                         <label>Phone Number</label>
-                        <input type="text" placeholder="(xxx) xxx-xxxx" data-inputmask="'mask': '(999) 999-9999'" class="input_mask">
+                        <input type="text" placeholder="(xxx) xxx-xxxx" data-inputmask="'mask': '(999) 999-9999'" class="input_mask"
+                            name="phone">
                     </div>
                 </div>
 
@@ -83,10 +63,10 @@
                     <label>Street Address</label>
                     <div class="fields">
                         <div class="twelve wide field">
-                            <input type="text" name="shipping[address]" placeholder="Street Address">
+                            <input type="text" name="address" placeholder="Street Address">
                         </div>
                         <div class="four wide field">
-                            <input type="text" name="shipping[address-2]" placeholder="Apt #">
+                            <input type="text" name="apt" placeholder="Apt #">
                         </div>
                     </div>
                 </div>
@@ -94,8 +74,8 @@
                 <div class="two fields">
                     <div class="field">
                         <label>State</label>
-                        <select class="ui fluid dropdown">
-                            <option value="AL">Alabama</option>
+                        <select class="ui fluid dropdown" name="state">
+                            <option value="Alabama">Alabama</option>
                         </select>
                     </div>
                     <div class="field">
@@ -105,7 +85,7 @@
                             <i class="dropdown icon"></i>
                             <div class="default text">Select Country</div>
                             <div class="menu">
-                                <div class="item" data-value="us"><i class="us flag"></i>United States</div>
+                                <div class="item" data-value="United States"><i class="us flag"></i>United States</div>
                             </div>
                         </div>
                     </div>
@@ -116,7 +96,7 @@
                 <div class="ui grid">
                     <div class="sixteen wide column">
                         <div class="ui five cards">
-                            <div class="ui raised link card">
+                            <!-- <div class="ui raised link card">
                                 <div class="image">
                                     <img src="http://placehold.it/100x150">
                                 </div>
@@ -126,7 +106,7 @@
                                         JPEG
                                     </span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -150,11 +130,33 @@
             </form>
         </div>
         <div class="actions">
+            <button id="delete_client_btn" class="ui red basic left floated icon button"><i class="trash alternate outline icon"></i>
+                Delete</button>
             <button class="ui black deny button">Cancel</button>
-            <button class="ui positive right labeled icon button">
+            <button class="ui positive right labeled icon button" id="save_client_btn">
                 Save
                 <i class="checkmark icon"></i>
             </button>
+        </div>
+    </div>
+
+    <div id="prompt" class="ui basic modal">
+        <div class="ui icon header">
+            <i class="archive icon"></i>
+            Archive Old Messages
+        </div>
+        <div class="content">
+            <p></p>
+        </div>
+        <div class="actions">
+            <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+            </div>
+            <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+            </div>
         </div>
     </div>
 

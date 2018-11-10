@@ -7,3 +7,7 @@
     font-size: 60%;
     padding-left: 10px;
 }
+
+#prompt .content p {
+    text-align: center;
+}
