@@ -24,6 +24,11 @@
             "error",
             "never"
         ],
-        "no-alert": 0
+        "no-alert": 0,
+        "quotes": [
+            "error",
+            "double",
+            "single"
+        ]
     }
 }
