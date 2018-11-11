@@ -11,3 +11,7 @@
 #prompt .content p {
     text-align: center;
 }
+
+#attachment_container .card .content span {
+    text-transform: uppercase;
+}

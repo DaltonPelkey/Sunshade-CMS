@@ -21,12 +21,8 @@ class Client {
         return this._id;
     }
 
-    setID(id) {
-        this._id = id;
-    }
-
     _generateId() {
-        const id = Date.now() + crypto.randomBytes(15);
+        const id = Date.now() + crypto.randomBytes(15).toString('hex');
         const hash = crypto.createHash('md5').update(id).digest('hex');
         return hash;
     }

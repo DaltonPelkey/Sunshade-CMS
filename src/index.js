@@ -64,3 +64,16 @@ ipcMain.on('create-open-dialog', handle.createOpenDialog);
 ipcMain.on('update-client', handle.updateClient);
 ipcMain.on('fetch-all-clients', handle.fetchAllClients);
 ipcMain.on('fetch-client', handle.fetchClient);
+ipcMain.on('delete-client', handle.deleteClient);
+ipcMain.on('download-file', handle.downloadFile);
+ipcMain.on('delete-file', handle.deleteFile);
+ipcMain.on('fetch-attachments', handle.fetchAttachments);
+ipcMain.on('save-attachments', handle.saveAttachments);
+
+ipcMain.on('show-message-box', (event, type, title, message) => {
+    dialog.showMessageBox(mainWindow, {
+        type: type,
+        title: title,
+        message: message
+    });
+});

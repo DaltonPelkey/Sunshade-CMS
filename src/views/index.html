@@ -8,6 +8,13 @@
     <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="../css/global.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../node_modules/semantic-ui-calendar/dist/calendar.min.css">
+
+    <script src="../../node_modules/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+    <script src="../semantic/dist/semantic.min.js"></script>
+    <script src="../../node_modules/moment/min/moment.min.js"></script>
+    <script src="../../node_modules/semantic-ui-calendar/dist/calendar.min.js"></script>
+    <script src="../js/index.js"></script>
 </head>
 
 <body>
@@ -21,7 +28,7 @@
             </div>
             <div class="right item">
                 <div class="ui icon input">
-                    <input type="text" placeholder="Search clients...">
+                    <input type="text" placeholder="Search clients..." id="search_clients">
                     <i class="search icon"></i>
                 </div>
             </div>
@@ -29,6 +36,35 @@
     </div>
 
     <div class="ui container">
+        <div class="ui grid">
+            <div class="twelve wide column">
+                <div class="ui form">
+                    <h4>Filter by date range</h4>
+                    <div class="three fields">
+                        <div class="field">
+                            <div class="ui calendar" id="rangestart">
+                                <div class="ui input left icon">
+                                    <i class="calendar icon"></i>
+                                    <input type="text" placeholder="Start">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui calendar" id="rangeend">
+                                <div class="ui input left icon">
+                                    <i class="calendar icon"></i>
+                                    <input type="text" placeholder="End">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="ui blue button" type="button" id="apply_date_range">Apply</button>
+                            <button class="ui button" type="button" id="reset_date_range">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="client_container" class="ui three cards"></div>
     </div>
 
@@ -36,6 +72,8 @@
         <div class="header" id="client_modal_header"></div>
         <div class="content">
             <form class="ui form">
+                <input type="hidden" name="date_created">
+
                 <h4 class="ui dividing header">Basic Info</h4>
 
                 <div class="two fields">
@@ -80,7 +118,7 @@
                     </div>
                     <div class="field">
                         <label>Country</label>
-                        <div class="ui fluid search selection dropdown">
+                        <div class="ui fluid selection dropdown" id="country_select">
                             <input type="hidden" name="country">
                             <i class="dropdown icon"></i>
                             <div class="default text">Select Country</div>
@@ -95,19 +133,7 @@
 
                 <div class="ui grid">
                     <div class="sixteen wide column">
-                        <div class="ui five cards">
-                            <!-- <div class="ui raised link card">
-                                <div class="image">
-                                    <img src="http://placehold.it/100x150">
-                                </div>
-                                <div class="extra content">
-                                    <span>
-                                        <i class="file alternate outline icon"></i>
-                                        JPEG
-                                    </span>
-                                </div>
-                            </div> -->
-                        </div>
+                        <div class="ui five cards" id="attachment_container"></div>
                     </div>
                 </div>
 
@@ -160,9 +186,6 @@
         </div>
     </div>
 
-    <script>window.$ = window.jQuery = require('jquery');</script>
-    <script src="../semantic/dist/semantic.min.js"></script>
-    <script src="../js/index.js"></script>
 </body>
 
 </html>
