@@ -1,77 +1,79 @@
 {
-  "name": "sunshade-cms",
-  "productName": "sunshade-cms",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "eslint src --color"
-  },
-  "keywords": [],
-  "author": "dpelk",
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {
-        "packageManager": "npm"
-      },
-      "electronWinstallerConfig": {
-        "name": "sunshade_cms"
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "",
-        "name": ""
-      },
-      "windowsStoreConfig": {
-        "packageName": "",
-        "name": "sunshadecms"
-      }
+    "name": "sunshade-cms",
+    "productName": "Sunshade CMS",
+    "version": "1.0.0",
+    "description": "Sunshade Clientele Management System",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "eslint src --color"
+    },
+    "keywords": [],
+    "author": "Dalton Pelkey <dpelkey98@outlook.com>",
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "make_targets": {
+                "win32": [
+                    "squirrel"
+                ],
+                "darwin": [
+                    "zip"
+                ],
+                "linux": [
+                    "deb",
+                    "rpm"
+                ]
+            },
+            "electronPackagerConfig": {
+                "packageManager": "npm",
+                "icon": "./src/assets/logo.ico"
+            },
+            "electronWinstallerConfig": {
+                "name": "SunshadeCMS",
+                "exe": "Sunshade CMS.exe",
+                "icon": "./src/assets/logo.ico",
+                "setupIcon": "./src/assets/logo-setup.ico",
+                "setupExe": "SunshadeCMS Setup.exe"
+            },
+            "electronInstallerDebian": {},
+            "electronInstallerRedhat": {},
+            "github_repository": {
+                "owner": "popatop15",
+                "name": "Sunshade-CMS"
+            },
+            "windowsStoreConfig": {
+                "packageName": "",
+                "name": "sunshadecms"
+            }
+        }
+    },
+    "dependencies": {
+        "babylon": "^6.18.0",
+        "electron-compile": "^6.4.3",
+        "electron-squirrel-startup": "^1.0.0",
+        "file-type": "^10.4.0",
+        "inputmask": "^4.0.3",
+        "jquery": "^3.3.1",
+        "moment": "^2.22.2",
+        "node-gyp": "^3.8.0",
+        "pouchdb": "^7.0.0",
+        "semantic-ui": "^2.4.2",
+        "semantic-ui-calendar": "0.0.8"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-async-to-generator": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
+        "electron-forge": "^5.2.2",
+        "electron-prebuilt-compile": "3.0.6",
+        "eslint": "^3.19.0",
+        "eslint-config-airbnb": "^15.1.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.11.1"
     }
-  },
-  "dependencies": {
-    "babylon": "^6.18.0",
-    "electron-compile": "^6.4.3",
-    "electron-pdf-window": "^1.0.12",
-    "electron-squirrel-startup": "^1.0.0",
-    "file-type": "^10.4.0",
-    "inputmask": "^4.0.3",
-    "jquery": "^3.3.1",
-    "moment": "^2.22.2",
-    "node-gyp": "^3.8.0",
-    "pouchdb": "^7.0.0",
-    "pouchdb-find": "^7.0.0",
-    "pouchdb-silverlining": "^0.1.0",
-    "semantic-ui": "^2.4.2",
-    "semantic-ui-calendar": "0.0.8"
-  },
-  "devDependencies": {
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "electron-forge": "^5.2.2",
-    "electron-prebuilt-compile": "3.0.6",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.11.1"
-  }
 }

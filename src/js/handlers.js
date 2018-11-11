@@ -1,15 +1,22 @@
 import { app, dialog } from 'electron';
 import { Client } from './Client';
 import fs from 'fs';
+import path from 'path';
 import { promisify } from 'util';
 import crypto from 'crypto';
 import filetype from 'file-type';
 import PouchDB from 'pouchdb';
-// PouchDB.plugin(require('pouchdb-find'));
-// PouchDB.plugin(require('pouchdb-silverlining'));
 import config from '../config';
 
-const clientdb = new PouchDB(config.database.names.clients);
+let dbdir = path.join(app.getPath('userData'), 'pouchdb');
+if (!fs.existsSync(dbdir)) {
+    fs.mkdirSync(dbdir);
+}
+const Pouch = PouchDB.defaults({
+    prefix: dbdir + '\\'
+});
+
+const clientdb = new Pouch(config.database.names.clients);
 const asyncReadFile = promisify(fs.readFile);
 
 exports.createOpenDialog = (event, id) => {
@@ -102,7 +109,7 @@ exports.fetchClient = async (event, id) => {
     });
 };
 
-exports.fetchAllClients = async (event, filter) => {
+exports.fetchAllClients = async (event) => {
     clientdb.allDocs({ include_docs: true }).catch(err => {
         event.sender.send('error', err);
     }).then(docs => {
@@ -154,23 +161,10 @@ exports.updateClient = async (event, client) => {
     }
 };
 
-const dbput = async doc => {
-    return new Promise(async (resolve, reject) => {
-        let rev;
-        try {
-            rev = await dbget(doc._id);
-        } catch (err) {
-            rev = null;
-        }
-        if (rev) doc._rev = rev._rev;
-        clientdb.put(doc).catch(err => {
-            reject(err);
-        }).then(resolve);
-    });
-};
-
-const dbget = async id => {
-    return new Promise((resolve, reject) => {
-        clientdb.get(id).catch(reject).then(resolve);
+exports.showMessageBox = (event, type, title, message) => {
+    dialog.showMessageBox({
+        type: type,
+        title: title,
+        message: message
     });
 };
